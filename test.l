@@ -1,4 +1,5 @@
 %{
+#include "lexer.hh"
 #include <stdio.h>
 %}
 %option nodefault
@@ -16,7 +17,7 @@
 \n { ECHO; }
 %%
 int main() {
-    FlexLexer* lexer = new yyFlexLexer;
+    FlexLexer* lexer = new MyLexer;
     while(lexer->yylex() != 0) ;
         return 0;
 }
