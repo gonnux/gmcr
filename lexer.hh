@@ -7,4 +7,5 @@ public:
     MyLexer();
     virtual ~MyLexer();
     void hello();
+    int yylex();
 };

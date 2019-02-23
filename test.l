@@ -1,10 +1,12 @@
 %{
+//#define YY_DECL int MyLexer::yylex()
 #include "lexer.hh"
 #include <stdio.h>
 %}
 %option nodefault
 %option noyywrap
 %option c++
+%option yyclass="MyLexer"
 %x MACRO
 
 %%
@@ -14,7 +16,7 @@
 <MACRO>\n    { printf("[%s]\n", yytext); }
 <MACRO>.    { printf("[%s]\n", yytext); }
 . { ECHO; }
-\n { ECHO; }
+\n { this->hello(); ECHO; }
 %%
 int main() {
     FlexLexer* lexer = new MyLexer;
