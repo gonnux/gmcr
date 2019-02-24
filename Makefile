@@ -4,4 +4,4 @@ gmcr : lex.yy.cc
 lex.yy.cc : gmcr.ll
 	flex gmcr.ll
 clean :
-	rm test lex.yy.cc
+	rm gmcr lex.yy.cc
