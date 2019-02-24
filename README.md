@@ -1,7 +1,7 @@
 # gmcr
 gonapps' simple macro
 ## Usage
-### installation
+### Installation
 ```console
 git clone https://github.com/gonapps-org/gmcr
 cd gmcr
@@ -13,7 +13,14 @@ apt install make
 make
 make install
 ```
-### example
+## Grammer
+- gmcr code shall begin with '#{{' followed by mode modifier string
+- gmcr code shall end with single white space or newline followed by '}}#'
+### Include
+#{{i FILEPATH }}#
+### Code
+#{{c print('any lua5.3 code here') }}#
+### Example
 ```console
 gmcr -f args.json < template.gmcr
 ````
@@ -25,9 +32,9 @@ gmcr -f args.json < template.gmcr
 ### template.gmcr example
 ```text
 FROM alpine:latest
-#{{m branch = args.branch }}#
+#{{c branch = args.branch }}#
 RUN apk update && apk add tmux
-#{{m if branch == 'dev' then print('apk add git') }}#
+#{{c if branch == 'dev' then print('apk add git') }}#
 #{{i partial.gmcr }}#
 ```
 
