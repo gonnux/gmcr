@@ -75,11 +75,13 @@ int main(int argc, char** argv) {
     po::options_description desc{"Options"};
     std::string argsFile;
     desc.add_options()
-      ("help", "Help")
-      ("args-file,f", po::value<std::string>()->default_value("args.json")->notifier([&argsFile](const std::string value) mutable { argsFile = std::move(value); }), "ArgsFile");
+      ("help,h", "Print this help message")
+      ("args-file,f", po::value<std::string>()->required()->notifier([&argsFile](const std::string value) mutable { argsFile = std::move(value); }), "Specify args file path");
     po::variables_map varsMap;
     po::store(po::parse_command_line(argc, argv, desc), varsMap);
     if(varsMap.count("help")) {
+        std::cout << "GMCR: gonapps' simple macro" << std::endl;
+        std::cout << "It reads template file from stdin, prints processed result to stdout" << std::endl;
         std::cout << desc << std::endl;
         return 0;
     }

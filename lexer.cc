@@ -35,8 +35,10 @@ void Gmcr::Lexer::pushArgs(const json& subArgs) {
 
 Gmcr::Lexer::Lexer(std::string&& argsFilePath) : m_luaState{luaL_newstate()} {
     luaL_openlibs(m_luaState);
-    std::cerr << "--args-file: " << argsFilePath << std::endl;
     std::ifstream argsFile{argsFilePath};
+    if(argsFile.fail()) {
+        throw std::runtime_error(strerror(errno));
+    }
     argsFile >> m_args;
     pushArgs(m_args);
     lua_setglobal(m_luaState, "args");
