@@ -27,7 +27,7 @@ Your args.json input is saved to the global variable 'args'
 ```
 ### Example
 ```console
-gmcr -f args.json < template.gmcr
+gmcr -f args.json < template.gmcr > output
 ````
 ### args.json example
 ```json
