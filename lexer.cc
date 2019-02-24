@@ -6,18 +6,48 @@
 #include <lauxlib.h>
 #include "lexer.hh"
 
-Gmcr::Lexer::Lexer(std::string&& argsFilePath) : luaState{luaL_newstate()} {
-    luaL_openlibs(luaState);
+using json = nlohmann::json;
+void Gmcr::Lexer::pushArgs(const json& subArgs) {
+    lua_newtable(m_luaState);
+    size_t i = 1;
+    for(json::const_iterator it = subArgs.begin(); it != subArgs.end(); ++it) {
+        if(subArgs.is_object()) {
+            lua_pushstring(m_luaState, it.key().c_str());
+        } else {
+            lua_pushinteger(m_luaState, i);
+            ++i;
+        }
+        if(it->is_structured()) {
+            Gmcr::Lexer::pushArgs(it.value());
+        } else {
+            if(it->is_null())
+                lua_pushnil(m_luaState);
+            else if(it->is_boolean())
+                lua_pushboolean(m_luaState, it.value());
+            else if(it->is_number())
+                lua_pushnumber(m_luaState, it.value());
+            else if(it->is_string())
+                lua_pushstring(m_luaState, it.value().get<std::string>().c_str());
+        }
+        lua_settable(m_luaState, -3);
+    }
+}
+
+Gmcr::Lexer::Lexer(std::string&& argsFilePath) : m_luaState{luaL_newstate()} {
+    luaL_openlibs(m_luaState);
     std::cerr << "--args-file: " << argsFilePath << std::endl;
     std::ifstream argsFile{argsFilePath};
-    argsFile >> args;
+    argsFile >> m_args;
+    pushArgs(m_args);
+    lua_setglobal(m_luaState, "args");
 }
+
 Gmcr::Lexer::~Lexer() {}
 bool Gmcr::Lexer::eval(std::string&& content) {
-    if(luaL_dostring(luaState, content.c_str())) {
-        std::cout << lua_tostring(luaState, -1) << std::endl;
-	lua_pop(luaState, 1);
-	return false;
+    if(luaL_dostring(m_luaState, content.c_str())) {
+        std::cout << lua_tostring(m_luaState, -1) << std::endl;
+        lua_pop(m_luaState, 1);
+        return false;
     }
     return true;
 }
