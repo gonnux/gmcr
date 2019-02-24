@@ -37,7 +37,7 @@ Gmcr::Lexer::Lexer(std::string&& argsFilePath) : m_luaState{luaL_newstate()} {
     luaL_openlibs(m_luaState);
     std::ifstream argsFile{argsFilePath};
     if(argsFile.fail()) {
-        throw std::runtime_error(strerror(errno));
+        throw std::runtime_error(argsFilePath + ": " + strerror(errno));
     }
     argsFile >> m_args;
     pushArgs(m_args);
@@ -47,7 +47,7 @@ Gmcr::Lexer::Lexer(std::string&& argsFilePath) : m_luaState{luaL_newstate()} {
 Gmcr::Lexer::~Lexer() {}
 bool Gmcr::Lexer::eval(std::string&& content) {
     if(luaL_dostring(m_luaState, content.c_str())) {
-        std::cout << lua_tostring(m_luaState, -1) << std::endl;
+        std::cout << lua_tostring(m_luaState, -1);
         lua_pop(m_luaState, 1);
         return false;
     }

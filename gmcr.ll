@@ -34,8 +34,7 @@ GMCR_END \}\}#
         std::cerr << "Cannot include " << path << std::endl;
         yyterminate();
     }
-    auto buf = yy_create_buffer(*file, YY_BUF_SIZE);
-    yypush_buffer_state(buf);
+    yypush_buffer_state(yy_create_buffer(*file, YY_BUF_SIZE));
     m_fileStack.push(file);
     BEGIN(INITIAL);
   }
