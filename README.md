@@ -17,10 +17,14 @@ make install
 - gmcr code shall begin with '#{{' followed by mode modifier string
 - gmcr code shall end with single white space or newline followed by '}}#'
 ### Include
+```text
 #{{i FILEPATH }}#
+```
 ### Code
 Your args.json input is saved to the global variable 'args'
+```text
 #{{c print('any lua5.3 code here') }}#
+```
 ### Example
 ```console
 gmcr -f args.json < template.gmcr
