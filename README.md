@@ -4,6 +4,7 @@ gonapps' simple macro
 ### installation
 ```console
 git clone https://github.com/gonapps-org/gmcr
+cd gmcr
 apt install liblua5.3-dev
 apt install libboost-program-options-dev
 apt install flex
