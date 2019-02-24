@@ -28,6 +28,8 @@
   \}\} { BEGIN(INITIAL); std::cout << "MACRO END[" << YYText() << "]" << std::endl; }
 }
 
+.|\n ECHO;
+
 %%
 int main() {
     FlexLexer* lexer = new MyLexer;
