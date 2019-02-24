@@ -5,7 +5,7 @@
 #include <fstream>
 #include <memory>
 #include <boost/program_options.hpp>
-#define GMCR_END "}}#"
+#define GMCR_END " }}#"
 %}
 %option nodefault
 %option noyywrap
@@ -15,9 +15,9 @@
 %s GMCR_STATE_MACRO
 GMCR_BEGIN #\{\{
 GMCR_CONTENT .|\n
-GMCR_ESCCHAR [^\\\}#]
-GMCR_ESCAPE .?\\\}\}#
-GMCR_END \}\}#
+GMCR_ESCCHAR [^\\[[:space:]]\}#]
+GMCR_ESCAPE .?\\[[:space:]]\}\}#
+GMCR_END [[:space:]]\}\}#
 %%
 
 
