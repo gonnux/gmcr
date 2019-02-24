@@ -21,7 +21,7 @@ GMCR_END \}\}#
 %%
 
 
-{GMCR_BEGIN}include[[:space:]] BEGIN(GMCR_STATE_INCLUDE);
+{GMCR_BEGIN}i[[:space:]] BEGIN(GMCR_STATE_INCLUDE);
 <GMCR_STATE_INCLUDE>{
   {GMCR_CONTENT} yymore();
   GMC_ESCAPE_CHAR* yymore();
@@ -40,7 +40,7 @@ GMCR_END \}\}#
   }
 }
 
-<INITIAL>{GMCR_BEGIN}[[:space:]] BEGIN(GMCR_STATE_MACRO);
+<INITIAL>{GMCR_BEGIN}m[[:space:]] BEGIN(GMCR_STATE_MACRO);
 <GMCR_STATE_MACRO>{
   {GMCR_CONTENT} yymore();
   GMCR_ESCAPE_CHAR* { yymore(); }
