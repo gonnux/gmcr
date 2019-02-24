@@ -1,0 +1,2 @@
+# gmcr
+gonapps' simple macro
