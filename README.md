@@ -39,7 +39,7 @@ gmcr -f args.json < template.gmcr
 FROM alpine:latest
 #{{c branch = args.branch }}#
 RUN apk update && apk add tmux
-#{{c if branch == 'dev' then print('apk add git') }}#
+#{{c if branch == 'dev' then print('apk add git') end }}#
 #{{i partial.gmcr }}#
 ```
 
