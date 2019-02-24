@@ -19,6 +19,7 @@ make install
 ### Include
 #{{i FILEPATH }}#
 ### Code
+Your args.json input is saved to the global variable 'args'
 #{{c print('any lua5.3 code here') }}#
 ### Example
 ```console
