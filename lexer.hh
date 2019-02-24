@@ -2,10 +2,12 @@
 #if !defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
 #endif
-class MyLexer : public yyFlexLexer {
-public:
-    MyLexer();
-    virtual ~MyLexer();
-    void hello();
-    int yylex();
+namespace Gmcr {
+    class Lexer : public yyFlexLexer {
+    public:
+        Lexer();
+        virtual ~Lexer();
+        std::string&& evaluate(std::string&&);
+        int yylex();
+    };
 };

@@ -1,12 +1,12 @@
 #include <iostream>
 #include "lexer.hh"
-MyLexer::MyLexer() {}
-MyLexer::~MyLexer() {}
-void MyLexer::hello() {
-    std::cout << "HELLO WORLD" << std::endl;
+Gmcr::Lexer::Lexer() {}
+Gmcr::Lexer::~Lexer() {}
+std::string&& Gmcr::Lexer::evaluate(std::string&& content) {
+    return std::move(content);
 }
 /*
-int MyLexer::yylex() {
+int GmcrLexer::yylex() {
     return 0;
 }
 */
