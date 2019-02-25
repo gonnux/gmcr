@@ -6,8 +6,11 @@ gonapps' simple macro
 git clone https://github.com/gonapps-org/gmcr
 cd gmcr
 apt install liblua5.3-dev
+apt install libboost-dev
 apt install libboost-program-options-dev
+apt install nlohmann-json-dev
 apt install flex
+apt install libfl-dev
 apt install g++
 apt install make
 make
