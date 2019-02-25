@@ -15,7 +15,7 @@ namespace Gmcr {
         std::stack<std::ifstream*> m_fileStack;
         void pushArgs(const json&);
     public:
-        Lexer(std::string&&);
+        Lexer(std::string&& argsFilePath, std::istream* new_in = nullptr, std::ostream* new_out = nullptr);
         virtual ~Lexer();
         bool eval(std::string&&);
         int yylex();

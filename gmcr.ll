@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
     }
     po::notify(varsMap);
 
-    std::unique_ptr<FlexLexer> lexer{new Gmcr::Lexer{std::move(argsFile)}};
+    std::unique_ptr<FlexLexer> lexer{new Gmcr::Lexer{std::move(argsFile), &std::cin}};
 
     while(lexer->yylex() != 0) ;
         return 0;
