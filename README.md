@@ -17,12 +17,17 @@ make install
 - gmcr code shall begin with '#{{' followed by mode modifier string
 - gmcr code shall end with single white space or newline followed by '}}#'
 ### Include
+```text
 #{{i FILEPATH }}#
+```
 ### Code
+Your args.json input is saved to the global variable 'args'
+```text
 #{{c print('any lua5.3 code here') }}#
+```
 ### Example
 ```console
-gmcr -f args.json < template.gmcr
+gmcr -f args.json < template.gmcr > output
 ````
 ### args.json example
 ```json
@@ -34,7 +39,7 @@ gmcr -f args.json < template.gmcr
 FROM alpine:latest
 #{{c branch = args.branch }}#
 RUN apk update && apk add tmux
-#{{c if branch == 'dev' then print('apk add git') }}#
+#{{c if branch == 'dev' then print('apk add git') end }}#
 #{{i partial.gmcr }}#
 ```
 
