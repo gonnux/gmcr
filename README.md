@@ -13,6 +13,7 @@ apt install flex
 apt install libfl-dev
 apt install g++
 apt install make
+apt install cmake
 cd build
 cmake ..
 make
