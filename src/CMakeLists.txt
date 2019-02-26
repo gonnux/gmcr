@@ -1,5 +1,6 @@
 find_library(lua_LIBRARIES NAMES liblua5.3.so liblua-5.3.so liblua-5.3.so.0 liblua.a REQUIRED)
 find_path(lua_INCLUDE_DIRS NAMES lua.h lualib.h lauxlib.h PATHS /usr/include/lua5.3 REQUIRED)
+find_package(Boost REQUIRED COMPONENTS program_options)
 find_package(FLEX REQUIRED)
 flex_target(lexer gmcr.ll "${PROJECT_SOURCE_DIR}/src/lex.yy.cc")
 
@@ -27,12 +28,13 @@ target_include_directories(
     PRIVATE
     ${PROJECT_BINARY_DIR}
     ${lua_INCLUDE_DIRS}
+    ${Boost_INCLUDE_DIRS}
 )
 
 target_link_libraries(
     gmcr
     ${lua_LIBRARIES}
-    boost_program_options
+    ${Boost_PROGRAM_OPTIONS_LIBRARY}
 )
 
 configure_file(
