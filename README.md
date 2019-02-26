@@ -22,9 +22,10 @@ cmake ..
 make
 make install
 ```
-## Grammer
-- gmcr code shall begin with '#{{' followed by mode modifier string
-- gmcr code shall end with single white space or newline followed by '}}#'
+## Syntax
+- a gmcr tag must begin with '#{{' followed by mode modifier string
+- a gmcr tag must end with single white space or newline followed by '}}#'
+## Tags
 ### Include
 ```text
 #{{i FILEPATH }}#
