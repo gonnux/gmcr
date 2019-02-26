@@ -29,6 +29,7 @@ target_include_directories(
     ${PROJECT_BINARY_DIR}
     ${lua_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIRS}
+    ${FLEX_INCLUDE_DIRS}
 )
 
 target_link_libraries(
