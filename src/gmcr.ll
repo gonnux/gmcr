@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
     desc.add_options()
       ("help,h", "Print this help message")
       ("version,v", "Print the version")
-      ("args,a", po::value<std::string>()->required()->notifier([&argsFile](const std::string value) mutable { argsFile = std::move(value); }), "Specify args file path");
+      ("args,a", po::value<std::string>()->notifier([&argsFile](const std::string value) mutable { argsFile = std::move(value); }), "Specify args file path");
     po::variables_map varsMap;
     po::store(po::parse_command_line(argc, argv, desc), varsMap);
     if(varsMap.count("help")) {

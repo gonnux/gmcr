@@ -33,11 +33,15 @@ void Gmcr::Lexer::pushArgs(const json& subArgs) {
 
 Gmcr::Lexer::Lexer(std::string&& argsFilePath, std::istream* new_in, std::ostream* new_out) : yyFlexLexer(new_in, new_out), m_luaState{luaL_newstate()} {
     luaL_openlibs(m_luaState);
-    std::ifstream argsFile{argsFilePath};
-    if(argsFile.fail()) {
-        throw std::runtime_error(argsFilePath + ": " + strerror(errno));
+    if(argsFilePath == "")
+        m_args = std::move("{}"_json);
+    else {
+        std::ifstream argsFile{argsFilePath};
+        if(argsFile.fail()) {
+            throw std::runtime_error(argsFilePath + ": " + strerror(errno));
+        }
+        argsFile >> m_args;
     }
-    argsFile >> m_args;
     pushArgs(m_args);
     lua_setglobal(m_luaState, "args");
 }
