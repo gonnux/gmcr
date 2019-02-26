@@ -2,7 +2,7 @@
 #include <fstream>
 #include <stack>
 #include <nlohmann/json.hpp>
-#include <lua.h>
+#include <lua.hpp>
 #if !defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
 #endif

@@ -1,9 +1,7 @@
 #include <fstream>
 #include <boost/program_options.hpp>
 #include <nlohmann/json.hpp>
-#include <lua.h>
-#include <lualib.h>
-#include <lauxlib.h>
+#include <lua.hpp>
 #include "lexer.hh"
 
 using json = nlohmann::json;
