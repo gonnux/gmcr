@@ -1,2 +1,2 @@
-lex.yy.cc
-gmcr
+src/lex.yy.cc
+build/*
