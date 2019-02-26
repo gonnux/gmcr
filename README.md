@@ -1,9 +1,14 @@
 # gmcr
-gonapps' simple macro
+## Introduction
+GMCR is abbreviation Gonapps' simple MaCRo
+
+It has similar syntax to mustache, yet it is more flexible because you can use lua code inside tags!
+
+You can use GMCR to generate configuration files based on a template
 ## Usage
 ### Installation
 ```console
-git clone https://github.com/gonapps-org/gmcr
+git clone --recurse-submodules https://github.com/gonapps-org/gmcr
 cd gmcr
 apt install liblua5.3-dev
 apt install libboost-dev
@@ -19,9 +24,10 @@ cmake ..
 make
 make install
 ```
-## Grammer
-- gmcr code shall begin with '#{{' followed by mode modifier string
-- gmcr code shall end with single white space or newline followed by '}}#'
+## Syntax
+- a gmcr tag must begin with '#{{' followed by mode modifier string
+- a gmcr tag must end with single white space or newline followed by '}}#'
+## Tags
 ### Include
 ```text
 #{{i FILEPATH }}#
