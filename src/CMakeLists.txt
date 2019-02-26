@@ -1,16 +1,11 @@
 find_library(lua_LIBRARIES NAMES liblua5.3.so liblua-5.3.so liblua-5.3.so.0 liblua.a REQUIRED)
+message(${lua_LIBRARIES})
 find_path(lua_INCLUDE_DIRS NAMES lua.h lualib.h lauxlib.h PATHS /usr/include/lua5.3 REQUIRED)
 find_package(Boost REQUIRED COMPONENTS program_options)
 find_package(FLEX REQUIRED)
 flex_target(lexer gmcr.ll "${PROJECT_SOURCE_DIR}/src/lex.yy.cc")
 
-add_executable(gmcr lex.yy.cc)
-
-target_sources(
-    gmcr
-    PRIVATE
-    lexer.cc
-)
+add_executable(gmcr lexer.cc lex.yy.cc)
 
 target_compile_options(gmcr PRIVATE -Wall)
 
