@@ -3,7 +3,7 @@ gonapps' simple macro
 ## Usage
 ### Installation
 ```console
-git clone https://github.com/gonapps-org/gmcr
+git clone --recurse-submodules https://github.com/gonapps-org/gmcr
 cd gmcr
 apt install liblua5.3-dev
 apt install libboost-dev
