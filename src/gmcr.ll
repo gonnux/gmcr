@@ -5,6 +5,7 @@
 #include <fstream>
 #include <memory>
 #include <boost/program_options.hpp>
+#include "config.h"
 #define GMCR_END " }}#"
 %}
 %option nodefault
@@ -75,6 +76,7 @@ int main(int argc, char** argv) {
     std::string argsFile;
     desc.add_options()
       ("help,h", "Print this help message")
+      ("version,v", "Print the version")
       ("args,a", po::value<std::string>()->required()->notifier([&argsFile](const std::string value) mutable { argsFile = std::move(value); }), "Specify args file path");
     po::variables_map varsMap;
     po::store(po::parse_command_line(argc, argv, desc), varsMap);
@@ -84,6 +86,11 @@ int main(int argc, char** argv) {
         std::cout << desc << std::endl;
         return 0;
     }
+    if(varsMap.count("version")) {
+        std::cout << GMCR_VERSION << std::endl;
+        return 0;
+    }
+
     po::notify(varsMap);
 
     std::unique_ptr<FlexLexer> lexer{new Gmcr::Lexer{std::move(argsFile), &std::cin}};

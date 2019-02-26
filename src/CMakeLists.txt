@@ -35,11 +35,11 @@ target_link_libraries(
     boost_program_options
 )
 
-#configure_file(
-#    "${PROJECT_SOURCE_DIR}/src/config.h.in"
-#    "${PROJECT_BINARY_DIR}/config.h"
-#    @ONLY
-#)
+configure_file(
+    "${PROJECT_SOURCE_DIR}/src/config.h.in"
+    "${PROJECT_BINARY_DIR}/config.h"
+    @ONLY
+)
 
 install(
     TARGETS gmcr

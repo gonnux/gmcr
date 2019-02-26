@@ -1,0 +1,10 @@
+#ifndef _CONFIG_H
+#define _CONFIG_H
+
+#define GMCR_VERSION "@version@"
+#define GMCR_VERSION_MAJOR @version_major@
+#define GMCR_VERSION_MINOR @version_minor@
+#define GMCR_VERSION_PATCH @version_patch@
+#define GMCR_BUILD_TYPE_@build_type@
+
+#endif
