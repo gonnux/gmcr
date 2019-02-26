@@ -3,6 +3,8 @@
 GMCR is abbreviation Gonapps' simple MaCRo
 
 It has similar syntax to mustache, yet it is more flexible because you can use lua code inside tags!
+
+You can use GMCR to generate configuration files based on a template
 ## Usage
 ### Installation
 ```console
