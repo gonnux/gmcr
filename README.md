@@ -1,5 +1,7 @@
 # gmcr
-gonapps' simple macro
+## Introduction
+GMCR is abbreviation Gonapps' simple MaCRo
+It has similar syntax to mustache, yet it is more flexible because you can use lua code inside tags!
 ## Usage
 ### Installation
 ```console
