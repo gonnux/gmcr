@@ -37,9 +37,8 @@ Gmcr::Lexer::Lexer(std::string&& argsFilePath, std::istream* new_in, std::ostrea
         m_args = std::move("{}"_json);
     else {
         std::ifstream argsFile{argsFilePath};
-        if(argsFile.fail()) {
+        if(argsFile.fail())
             throw std::runtime_error(argsFilePath + ": " + strerror(errno));
-        }
         argsFile >> m_args;
     }
     pushArgs(m_args);

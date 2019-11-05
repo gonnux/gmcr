@@ -3,9 +3,10 @@
 #include <stack>
 #include <nlohmann/json.hpp>
 #include <lua.hpp>
-#if !defined(yyFlexLexerOnce)
+#ifndef yyFlexLexerOnce
 #include <FlexLexer.h>
 #endif
+
 using json = nlohmann::json;
 namespace Gmcr {
     class Lexer : public yyFlexLexer {
@@ -17,7 +18,7 @@ namespace Gmcr {
     public:
         Lexer(std::string&& argsFilePath, std::istream* new_in = nullptr, std::ostream* new_out = nullptr);
         virtual ~Lexer();
+        virtual int yylex();
         bool eval(std::string&&);
-        int yylex();
     };
 };
