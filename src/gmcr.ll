@@ -25,7 +25,7 @@ GMCR_END [[:space:]]\}\}#
 {GMCR_BEGIN}i[[:space:]] BEGIN(GMCR_STATE_INCLUDE);
 <GMCR_STATE_INCLUDE>{
   {GMCR_CONTENT} yymore();
-  GMC_ESCAPE_CHAR* yymore();
+  GMCR_ESCCHAR* yymore();
   {GMCR_ESCAPE} std::cout << GMCR_END;
   {GMCR_END} {
     std::string path = YYText();
@@ -44,7 +44,7 @@ GMCR_END [[:space:]]\}\}#
 <INITIAL>{GMCR_BEGIN}c[[:space:]] BEGIN(GMCR_STATE_MACRO);
 <GMCR_STATE_MACRO>{
   {GMCR_CONTENT} yymore();
-  GMCR_ESCAPE_CHAR* { yymore(); }
+  GMCR_ESCCHAR* { yymore(); }
   {GMCR_ESCAPE} yymore();
   {GMCR_END} {
     std::string content = YYText();
