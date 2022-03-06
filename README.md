@@ -1,6 +1,6 @@
 # gmcr
 ## Introduction
-GMCR is abbreviation Gonapps' simple MaCRo
+GMCR is abbreviation Gonnux' simple MaCRo
 
 It has similar syntax to mustache, yet it is more flexible because you can use lua code inside tags!
 
@@ -8,7 +8,7 @@ You can use GMCR to generate configuration files based on a template
 ## Usage
 ### Installation
 ```console
-git clone --recurse-submodules https://github.com/gonapps-org/gmcr
+git clone --recurse-submodules https://github.com/gonnux/gmcr
 cd gmcr
 apt install liblua5.3-dev
 apt install libboost-dev
