@@ -1,6 +1,6 @@
 # gmcr
 ## Introduction
-GMCR is abbreviation Gonnux' simple MaCRo
+GMCR is abbreviation Gonnux's simple MaCRo
 
 It has similar syntax to mustache, yet it is more flexible because you can use lua code inside tags!
 
